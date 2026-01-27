@@ -1,47 +1,19 @@
+README
 🏗️ Pro-Build API: Industrial Management System
 
-نظام إدارة محتوى (CMS) متطور مبني بـ Laravel 11 لتنظيم الأصول والمشاريع الصناعية. يتيح النظام تحكماً كاملاً للإدارة في بيانات الشركة (المعدات، الشركاء، العملاء، والإنجازات) مع توفير واجهة برمجة تطبيقات (API) سريعة ومحمية.
+نظام إدارة محتوى (CMS) متطور مبني بـ Laravel 12 لتنظيم الأصول والمشاريع الصناعية. يتيح النظام تحكماً كاملاً للإدارة في بيانات الشركة (المعدات، الشركاء، العملاء، والإنجازات) مع توفير واجهة برمجة تطبيقات (API) سريعة ومحمية.
 
 🧑‍💻 المطوّر (Developer)
 
-Abdalrhman AbdoAlhade
-Backend Developer – Node.js / Laravel / GO
+Abdalrhman AbdoAlhade Backend Developer – Node.js / Laravel / GO
 
-📧 البريد الإلكتروني: abdo.king22227@gmail.com
-🌐 جيت هاب: github.com/AbdalrhmanAbdoAlhade
+📧 البريد الإلكتروني: abdo.king22227@gmail.com 🌐 جيت هاب: github.com/AbdalrhmanAbdoAlhade
 
 📂 هيكل المشروع (Project Structure)
 
 تم تنظيم المشروع ليفصل بين منطق الإدارة (Admin) ومنطق العرض العام (Public) لضمان أقصى درجات الحماية وسهولة الصيانة:
 
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Admin/                  # متحكمات لوحة التحكم (CRUD)
-│   │   │   ├── AdminAchievementController.php
-│   │   │   ├── AdminClientController.php
-│   │   │   ├── AdminEquipmentController.php
-│   │   │   ├── AdminOurWorkController.php
-│   │   │   └── AdminPartnerController.php
-│   │   ├── AuthController.php       # إدارة التسجيل والتوكنز
-│   │   ├── StoreInfoController.php  # عرض بيانات المتجر
-│   │   └── [PublicControllers]      # متحكمات العرض العام (Read-only)
-│   └── Middleware/
-│       └── CheckRole.php            # الميدل وير الخاص بالتحقق من الصلاحيات
-├── Models/                          # نماذج قاعدة البيانات (Eloquent Models)
-│   ├── Achievement.php
-│   ├── Client.php
-│   ├── Equipment.php
-│   ├── OurWork.php
-│   └── Partner.php
-bootstrap/
-└── app.php                          # تكوين الميدل وير والأسماء المستعارة (Alias)
-routes/
-└── api.php                          # تعريف جميع مسارات الـ API (المحمية والعامة)
-storage/
-└── app/public/                      # المجلد الذي يحتوي على الصور المرفوعة
-
-
+app/ ├── Http/ │ ├── Controllers/ │ │ ├── Admin/ # متحكمات لوحة التحكم (CRUD) │ │ │ ├── AdminAchievementController.php │ │ │ ├── AdminClientController.php │ │ │ ├── AdminEquipmentController.php │ │ │ ├── AdminOurWorkController.php │ │ │ └── AdminPartnerController.php │ │ ├── AuthController.php # إدارة التسجيل والتوكنز │ │ ├── StoreInfoController.php # عرض بيانات المتجر │ │ └── [PublicControllers] # متحكمات العرض العام (Read-only) │ └── Middleware/ │ └── CheckRole.php # الميدل وير الخاص بالتحقق من الصلاحيات ├── Models/ # نماذج قاعدة البيانات (Eloquent Models) │ ├── Achievement.php │ ├── Client.php │ ├── Equipment.php │ ├── OurWork.php │ └── Partner.php bootstrap/ └── app.php # تكوين الميدل وير والأسماء المستعارة (Alias) routes/ └── api.php # تعريف جميع مسارات الـ API (المحمية والعامة) storage/ └── app/public/ # المجلد الذي يحتوي على الصور المرفوعة
 
 🌟 المميزات التقنية (Technical Features)
 
@@ -55,32 +27,27 @@ storage/
 
 🚀 إعداد المشروع (Quick Start)
 
-# 1. استنساخ المشروع
-git clone [https://github.com/AbdalrhmanAbdoAlhade/project-name.git](https://github.com/AbdalrhmanAbdoAlhade/project-name.git)
+1. استنساخ المشروع
+git clone https://github.com/AbdalrhmanAbdoAlhade/project-name.git
 
-# 2. تثبيت المكتبات
+2. تثبيت المكتبات
 composer install
 
-# 3. إعداد البيئة وقاعدة البيانات
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
+3. إعداد البيئة وقاعدة البيانات
+cp .env.example .env php artisan key:generate php artisan migrate
 
-# 4. ربط مجلد التخزين (هام جداً للصور)
+4. ربط مجلد التخزين (هام جداً للصور)
 php artisan storage:link
 
-# 5. تشغيل المشروع
+5. تشغيل المشروع
 php artisan serve
-
-
 
 🔌 توثيق المسارات (API Endpoints)
 
 🔓 المسارات العامة (Public)
 
-|
-
 | الوظيفة | المسار | الطريقة |
+|---------|--------|---------|
 | تسجيل الدخول | /api/login | POST |
 | عرض الإنجازات | /api/achievements | GET |
 
@@ -89,6 +56,7 @@ php artisan serve
 يجب إرسال Authorization: Bearer {token}
 
 | الوظيفة | المسار | الطريقة |
+|---------|--------|---------|
 | إضافة عمل جديد | /api/admin/our-works | POST |
 | تحديث معدة | /api/admin/equipments/{id} | POST (مع _method=PUT) |
 | حذف شريك | /api/admin/partners/{id} | DELETE |
