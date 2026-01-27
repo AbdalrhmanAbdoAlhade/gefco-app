@@ -59,17 +59,45 @@ Route::middleware('auth:sanctum')->group(function () {
     | Admin Routes (مسارات الأدمن فقط)
     |--------------------------------------------------------------------------
     */
-    Route::middleware(['role:admin'])->prefix('admin')->group(function () {
+Route::middleware(['role:admin'])->prefix('admin')->group(function () {
 
-        // CRUD للجداول الخاصة بالأدمن
-        Route::apiResource('achievements', AdminAchievementController::class);
-        Route::apiResource('equipments', AdminEquipmentController::class);
-        Route::apiResource('our-works', AdminOurWorkController::class);
-        Route::apiResource('partners', AdminPartnerController::class);
-        Route::apiResource('clients', AdminClientController::class);
+    // --- Achievements (الإنجازات) ---
+    Route::get('achievements', [AdminAchievementController::class, 'index']);
+    Route::post('achievements', [AdminAchievementController::class, 'store']);
 
-        // إدارة معلومات المتجر
-        Route::post('/store-info/update', [AdminController::class, 'updateStoreInfo']);
-    });
+    Route::post('achievements/{id}', [AdminAchievementController::class, 'update']); // التعديل POST
+    Route::delete('achievements/{id}', [AdminAchievementController::class, 'destroy']);
+
+    // --- Equipments (المعدات) ---
+    Route::get('equipments', [AdminEquipmentController::class, 'index']);
+    Route::post('equipments', [AdminEquipmentController::class, 'store']);
+    
+    Route::post('equipments/{id}', [AdminEquipmentController::class, 'update']); // التعديل POST
+    Route::delete('equipments/{id}', [AdminEquipmentController::class, 'destroy']);
+
+    // --- Our Works (أعمالنا) ---
+    Route::get('our-works', [AdminOurWorkController::class, 'index']);
+    Route::post('our-works', [AdminOurWorkController::class, 'store']);
+
+    Route::post('our-works/{id}', [AdminOurWorkController::class, 'update']); // التعديل POST
+    Route::delete('our-works/{id}', [AdminOurWorkController::class, 'destroy']);
+
+    // --- Partners (الشركاء) ---
+    Route::get('partners', [AdminPartnerController::class, 'index']);
+    Route::post('partners', [AdminPartnerController::class, 'store']);
+
+    Route::post('partners/{id}', [AdminPartnerController::class, 'update']); // التعديل POST
+    Route::delete('partners/{id}', [AdminPartnerController::class, 'destroy']);
+
+    // --- Clients (العملاء) ---
+    Route::get('clients', [AdminClientController::class, 'index']);
+    Route::post('clients', [AdminClientController::class, 'store']);
+  
+    Route::post('clients/{id}', [AdminClientController::class, 'update']); // التعديل POST
+    Route::delete('clients/{id}', [AdminClientController::class, 'destroy']);
+
+    // إدارة معلومات المتجر
+    Route::post('/store-info/update', [AdminController::class, 'updateStoreInfo']);
+});
 
 });
