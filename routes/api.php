@@ -34,7 +34,7 @@ Route::get('/equipments/{id}', [App\Http\Controllers\EquipmentController::class,
 
 Route::get('/our-works', [App\Http\Controllers\OurWorkController::class, 'index']);
 Route::get('/our-works/{id}', [App\Http\Controllers\OurWorkController::class, 'show']);
-
+Route::post('/messages', [App\Http\Controllers\MessageController::class, 'store']);
 Route::get('/partners', [App\Http\Controllers\PartnerController::class, 'index']);
 Route::get('/partners/{id}', [App\Http\Controllers\PartnerController::class, 'show']);
 
@@ -53,7 +53,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::post('/profile/update', [AuthController::class, 'updateProfile']);
     Route::post('/logout', [AuthController::class, 'logout']);
-
+Route::get('messages', [App\Http\Controllers\MessageController::class, 'index']);      // رؤية كل الرسائل
+    Route::get('messages/{message}', [App\Http\Controllers\MessageController::class, 'show']); // رؤية رسالة محددة
+    Route::post('messages/{message}', [App\Http\Controllers\MessageController::class, 'update']); // تحديث (إذا احتجت)
+    Route::delete('messages/{message}', [App\Http\Controllers\MessageController::class, 'destroy']); // حذف الرسالة
     /*
     |--------------------------------------------------------------------------
     | Admin Routes (مسارات الأدمن فقط)
