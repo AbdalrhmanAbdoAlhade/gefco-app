@@ -17,4 +17,7 @@ class OurWork extends Model
         'cover_image',
         'description',
     ];
+    protected $casts = [
+        'image' => 'array',
+    ];
 }
