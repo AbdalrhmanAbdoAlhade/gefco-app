@@ -13,7 +13,33 @@ Abdalrhman AbdoAlhade Backend Developer – Node.js / Laravel / GO
 
 تم تنظيم المشروع ليفصل بين منطق الإدارة (Admin) ومنطق العرض العام (Public) لضمان أقصى درجات الحماية وسهولة الصيانة:
 
-app/ ├── Http/ │ ├── Controllers/ │ │ ├── Admin/ # متحكمات لوحة التحكم (CRUD) │ │ │ ├── AdminAchievementController.php │ │ │ ├── AdminClientController.php │ │ │ ├── AdminEquipmentController.php │ │ │ ├── AdminOurWorkController.php │ │ │ └── AdminPartnerController.php │ │ ├── AuthController.php # إدارة التسجيل والتوكنز │ │ ├── StoreInfoController.php # عرض بيانات المتجر │ │ └── [PublicControllers] # متحكمات العرض العام (Read-only) │ └── Middleware/ │ └── CheckRole.php # الميدل وير الخاص بالتحقق من الصلاحيات ├── Models/ # نماذج قاعدة البيانات (Eloquent Models) │ ├── Achievement.php │ ├── Client.php │ ├── Equipment.php │ ├── OurWork.php │ └── Partner.php bootstrap/ └── app.php # تكوين الميدل وير والأسماء المستعارة (Alias) routes/ └── api.php # تعريف جميع مسارات الـ API (المحمية والعامة) storage/ └── app/public/ # المجلد الذي يحتوي على الصور المرفوعة
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── Admin/                  # متحكمات لوحة التحكم (CRUD)
+│   │   │   ├── AdminAchievementController.php
+│   │   │   ├── AdminClientController.php
+│   │   │   ├── AdminEquipmentController.php
+│   │   │   ├── AdminOurWorkController.php
+│   │   │   └── AdminPartnerController.php
+│   │   ├── AuthController.php       # إدارة التسجيل والتوكنز
+│   │   ├── StoreInfoController.php  # عرض بيانات المتجر
+│   │   └── [PublicControllers]      # متحكمات العرض العام (Read-only)
+│   └── Middleware/
+│       └── CheckRole.php            # الميدل وير الخاص بالتحقق من الصلاحيات
+├── Models/                          # نماذج قاعدة البيانات (Eloquent Models)
+│   ├── Achievement.php
+│   ├── Client.php
+│   ├── Equipment.php
+│   ├── OurWork.php
+│   └── Partner.php
+bootstrap/
+└── app.php                          # تكوين الميدل وير والأسماء المستعارة (Alias)
+routes/
+└── api.php                          # تعريف جميع مسارات الـ API (المحمية والعامة)
+storage/
+└── app/public/                      # المجلد الذي يحتوي على الصور المرفوعة
+المجلد الذي يحتوي على الصور المرفوعة
 
 🌟 المميزات التقنية (Technical Features)
 
@@ -28,7 +54,6 @@ app/ ├── Http/ │ ├── Controllers/ │ │ ├── Admin/ # مت�
 🚀 إعداد المشروع (Quick Start)
 
 1. استنساخ المشروع
-git clone https://github.com/AbdalrhmanAbdoAlhade/project-name.git
 
 2. تثبيت المكتبات
 composer install
