@@ -1,5 +1,4 @@
-README
-🏗️ Pro-Build API: Industrial Management System
+README 🏗️ Pro-Build API: Industrial Management System
 
 نظام إدارة محتوى (CMS) متطور مبني بـ Laravel 12 لتنظيم الأصول والمشاريع الصناعية. يتيح النظام تحكماً كاملاً للإدارة في بيانات الشركة (المعدات، الشركاء، العملاء، والإنجازات) مع توفير واجهة برمجة تطبيقات (API) سريعة ومحمية.
 
@@ -7,39 +6,15 @@ README
 
 Abdalrhman AbdoAlhade Backend Developer – Node.js / Laravel / GO
 
-📧 البريد الإلكتروني: abdo.king22227@gmail.com 🌐 جيت هاب: github.com/AbdalrhmanAbdoAlhade
+📧 البريد الإلكتروني: abdo.king22227@gmail.com  
+📱 رقم الهاتف / واتس: 01023402756  
+🌐 جيت هاب: github.com/AbdalrhmanAbdoAlhade
 
 📂 هيكل المشروع (Project Structure)
 
 تم تنظيم المشروع ليفصل بين منطق الإدارة (Admin) ومنطق العرض العام (Public) لضمان أقصى درجات الحماية وسهولة الصيانة:
 
-app/
-├── Http/
-│   ├── Controllers/
-│   │   ├── Admin/                  # متحكمات لوحة التحكم (CRUD)
-│   │   │   ├── AdminAchievementController.php
-│   │   │   ├── AdminClientController.php
-│   │   │   ├── AdminEquipmentController.php
-│   │   │   ├── AdminOurWorkController.php
-│   │   │   └── AdminPartnerController.php
-│   │   ├── AuthController.php       # إدارة التسجيل والتوكنز
-│   │   ├── StoreInfoController.php  # عرض بيانات المتجر
-│   │   └── [PublicControllers]      # متحكمات العرض العام (Read-only)
-│   └── Middleware/
-│       └── CheckRole.php            # الميدل وير الخاص بالتحقق من الصلاحيات
-├── Models/                          # نماذج قاعدة البيانات (Eloquent Models)
-│   ├── Achievement.php
-│   ├── Client.php
-│   ├── Equipment.php
-│   ├── OurWork.php
-│   └── Partner.php
-bootstrap/
-└── app.php                          # تكوين الميدل وير والأسماء المستعارة (Alias)
-routes/
-└── api.php                          # تعريف جميع مسارات الـ API (المحمية والعامة)
-storage/
-└── app/public/                      # المجلد الذي يحتوي على الصور المرفوعة
-المجلد الذي يحتوي على الصور المرفوعة
+app/ ├── Http/ │ ├── Controllers/ │ │ ├── Admin/ # متحكمات لوحة التحكم (CRUD) │ │ │ ├── AdminAchievementController.php │ │ │ ├── AdminClientController.php │ │ │ ├── AdminEquipmentController.php │ │ │ ├── AdminOurWorkController.php │ │ │ └── AdminPartnerController.php │ │ ├── AuthController.php # إدارة التسجيل والتوكنز │ │ ├── StoreInfoController.php # عرض بيانات المتجر │ │ └── [PublicControllers] # متحكمات العرض العام (Read-only) │ └── Middleware/ │ └── CheckRole.php # الميدل وير الخاص بالتحقق من الصلاحيات ├── Models/ # نماذج قاعدة البيانات (Eloquent Models) │ ├── Achievement.php │ ├── Client.php │ ├── Equipment.php │ ├── OurWork.php │ └── Partner.php bootstrap/ └── app.php # تكوين الميدل وير والأسماء المستعارة (Alias) routes/ └── api.php # تعريف جميع مسارات الـ API (المحمية والعامة) storage/ └── app/public/ # المجلد الذي يحتوي على الصور المرفوعة
 
 🌟 المميزات التقنية (Technical Features)
 
@@ -53,38 +28,32 @@ storage/
 
 🚀 إعداد المشروع (Quick Start)
 
-1. استنساخ المشروع
+استنساخ المشروع
 
-2. تثبيت المكتبات
-composer install
+تثبيت المكتبات composer install
 
-3. إعداد البيئة وقاعدة البيانات
-cp .env.example .env php artisan key:generate php artisan migrate
+إعداد البيئة وقاعدة البيانات cp .env.example .env php artisan key:generate php artisan migrate
 
-4. ربط مجلد التخزين (هام جداً للصور)
-php artisan storage:link
+ربط مجلد التخزين (هام جداً للصور) php artisan storage:link
 
-5. تشغيل المشروع
-php artisan serve
+تشغيل المشروع php artisan serve
 
 🔌 توثيق المسارات (API Endpoints)
 
 🔓 المسارات العامة (Public)
 
-| الوظيفة | المسار | الطريقة |
-|---------|--------|---------|
-| تسجيل الدخول | /api/login | POST |
-| عرض الإنجازات | /api/achievements | GET |
+الوظيفة	المسار	الطريقة
+تسجيل الدخول	/api/login	POST
+عرض الإنجازات	/api/achievements	GET
 
 🔐 مسارات الأدمن (Admin Only)
 
 يجب إرسال Authorization: Bearer {token}
 
-| الوظيفة | المسار | الطريقة |
-|---------|--------|---------|
-| إضافة عمل جديد | /api/admin/our-works | POST |
-| تحديث معدة | /api/admin/equipments/{id} | POST (مع _method=PUT) |
-| حذف شريك | /api/admin/partners/{id} | DELETE |
+الوظيفة	المسار	الطريقة
+إضافة عمل جديد	/api/admin/our-works	POST
+تحديث معدة	/api/admin/equipments/{id}	POST (مع _method=PUT)
+حذف شريك	/api/admin/partners/{id}	DELETE
 
 🛠 الأدوات المستخدمة
 
@@ -100,6 +69,8 @@ Postman: لتجربة وتوثيق الـ API.
 
 GitHub: @AbdalrhmanAbdoAlhade
 
-Email: abdo.king22227@gmail.com
+Email: abdo.king22227@gmail.com  
+
+رقم الهاتف / واتس: 01023402756
 
 📅 تم التحديث في: يناير 2026
