@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StoreInfoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServiceController;
 
 // Admin CRUD Controllers
 use App\Http\Controllers\Admin\AdminAchievementController;
@@ -25,6 +26,8 @@ Route::post('/login', [AuthController::class, 'login']);
 // معلومات المتجر (عرض فقط)
 Route::get('/store-info', [StoreInfoController::class, 'index']);
 
+Route::get('services', [ServiceController::class, 'index']);
+Route::get('services/{id}', [ServiceController::class, 'show']);
 // عرض البيانات (عرض فقط لكل الجداول)
 Route::get('/achievements', [App\Http\Controllers\AchievementController::class, 'index']);
 Route::get('/achievements/{id}', [App\Http\Controllers\AchievementController::class, 'show']);
@@ -98,7 +101,10 @@ Route::middleware(['role:admin'])->prefix('admin')->group(function () {
   
     Route::post('clients/{id}', [AdminClientController::class, 'update']); // التعديل POST
     Route::delete('clients/{id}', [AdminClientController::class, 'destroy']);
-
+// إدارة الخدمات
+    Route::post('services', [AdminController::class, 'storeService']);          // إنشاء
+    Route::post('services/{id}', [AdminController::class, 'updateService']);    // تحديث (استخدم Post مع _method=PUT لرفع الصور)
+    Route::delete('services/{id}', [AdminController::class, 'deleteService']);
     // إدارة معلومات المتجر
     Route::post('/store-info/update', [AdminController::class, 'updateStoreInfo']);
 });
