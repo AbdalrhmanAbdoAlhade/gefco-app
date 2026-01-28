@@ -15,6 +15,9 @@ return new class extends Migration {
             $table->string('name');
             $table->string('logo')->nullable();
             $table->string('phone');
+            $table->string('experience')->nullable();
+            $table->string('completed_projects')->nullable();
+            $table->string('satisfied_clients')->nullable();
             $table->string('email');
             $table->string('address');
             $table->json('social_links')->nullable(); // مثال: {"facebook": "...", "twitter": "..."}
