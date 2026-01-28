@@ -21,10 +21,13 @@ class AdminController extends Controller
         $info = StoreInfo::first() ?? new StoreInfo();
 
         $data = $request->validate([
-            'name' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'address' => 'required|string',
+            'name' => 'nullable|string',
+            'phone' => 'nullable|string',
+            'email' => 'nullable|email',
+            'address' => 'nullable|string',
+            'experience' => 'nullable|string',
+            'satisfied_clients' => 'nullable|string',
+            'completed_projects' => 'nullable|string',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'social_links' => 'nullable|array'
         ]);
