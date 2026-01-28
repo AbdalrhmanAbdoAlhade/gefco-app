@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "9b5095f6-8dd8-4c9c-af8c-75dea23cdbc2",
     "name": "E-commerce Full System API",
-    "description": "نظام متكامل للمتجر الإلكتروني - لارافيل",
+    "description": "نظام متكامل برفيل الشركات وعرض الخدمات مع امكانيت تعديل واضافت مختلفه - لارافيل",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "34212662",
     "_collection_link": "https://go.postman.co/collection/34212662-9b5095f6-8dd8-4c9c-af8c-75dea23cdbc2?source=collection_link"
@@ -156,6 +156,16 @@
         {
           "name": "Update Store Info",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [
               {
@@ -173,27 +183,32 @@
                 {
                   "key": "name",
                   "value": "My Mega Store",
-                  "type": "text"
+                  "type": "text",
+                  "disabled": true
                 },
                 {
                   "key": "email",
                   "value": "info@megastore.com",
-                  "type": "text"
+                  "type": "text",
+                  "disabled": true
                 },
                 {
                   "key": "phone",
                   "value": "010000000",
-                  "type": "text"
+                  "type": "text",
+                  "disabled": true
                 },
                 {
                   "key": "address",
                   "value": "Cairo, Egypt",
-                  "type": "text"
+                  "type": "text",
+                  "disabled": true
                 },
                 {
                   "key": "logo",
                   "type": "file",
-                  "value": null
+                  "value": null,
+                  "disabled": true
                 }
               ]
             },
@@ -252,7 +267,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "4|7urWogXaZtjUe6OLRZGRB7vmKlXErBLYbvR84L6x6e42c3b6",
+                  "value": "{{vault:authorization-secret}}",
                   "type": "string"
                 }
               ]
@@ -407,6 +422,16 @@
         {
           "name": "Create Work",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{vault:authorization-secret}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "body": {
@@ -423,14 +448,20 @@
                   "type": "text"
                 },
                 {
-                  "key": "image",
+                  "key": "image[]",
                   "type": "file",
-                  "value": null
+                  "src": "4uimCCKu6/logo (2).png"
                 },
                 {
                   "key": "cover_image",
                   "type": "file",
-                  "value": null
+                  "src": "xSv8QfXjn/logo (2).png"
+                },
+                {
+                  "key": "image[]",
+                  "type": "file",
+                  "uuid": "f4b1f723-2ce1-434f-a5fb-fb36c12f39bc",
+                  "src": "yBxoEvzjW/logo (2).png"
                 }
               ]
             },
@@ -742,6 +773,298 @@
             }
           },
           "response": []
+        }
+      ]
+    },
+    {
+      "name": "Contact Messages API",
+      "item": [
+        {
+          "name": "Admin",
+          "item": [
+            {
+              "name": "Get All Messages",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{vault:authorization-secret}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "admin@test.com",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "12345678",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{base_url}}/messages",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Message",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "ضع_التوكن_هنا",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Public",
+          "item": [
+            {
+              "name": "Send Message",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@test.com\",\n    \"phone\": \"010203040\",\n    \"message\": \"Hello from Postman\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/messages",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "messages"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services",
+      "item": [
+        {
+          "name": "Admin Copy",
+          "item": [
+            {
+              "name": "services  up",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "9|uXaq7TXibmAbMC7fCiBK7DyNaxnYYJtHxCcH0z4Yd498f839",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "uuid": "65ff4105-1974-4c9a-9edb-96a1924437c2",
+                      "src": "/C:/Users/Your Gaming Machine/Downloads/618c2ad000abbf3abe050960617ee7c26b5fda46.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/services/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "services",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "services",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "9|uXaq7TXibmAbMC7fCiBK7DyNaxnYYJtHxCcH0z4Yd498f839",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "كودنج ألومينيوم",
+                      "type": "text",
+                      "uuid": "ade72ec0-7669-48cf-b235-2d5ce4fd9c49"
+                    },
+                    {
+                      "key": "description",
+                      "value": "نقدم خدمات كودنج الألومينيوم بأعلى معايير الجودة والدقة، مع استخدام أحدث التقنيات لضمان متانة وجمالية التشطيبات.",
+                      "type": "text",
+                      "uuid": "9a65b2a9-5ecc-491d-9c8a-d4a37e334e77"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "uuid": "ebfbc17a-6d80-4fd4-90ad-e79bef536920",
+                      "src": "/C:/Users/Your Gaming Machine/Downloads/download.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{base_url}}/admin/services",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "services"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "services",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "9|uXaq7TXibmAbMC7fCiBK7DyNaxnYYJtHxCcH0z4Yd498f839",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/admin/services/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "services",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "ضع_التوكن_هنا",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Public Copy",
+          "item": [
+            {
+              "name": "services",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/services",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "services"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "services show",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/services/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "services",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     }
